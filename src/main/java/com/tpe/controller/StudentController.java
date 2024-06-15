@@ -32,7 +32,7 @@ public class StudentController {
     public ResponseEntity<Map<String,String>> createStudent(@Valid @RequestBody Student student){
         studentService.createStudent(student);
         Map<String,String> map = new HashMap<>();
-        map.put("message","Student İS created succesSfulLy");
+        map.put("message","Student İS created successfulLy");
         map.put("status","true");
 
         return new ResponseEntity<>(map, HttpStatus.CREATED);
