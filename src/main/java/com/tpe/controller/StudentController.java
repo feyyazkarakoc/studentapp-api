@@ -39,4 +39,14 @@ public class StudentController {
     }
 
 
+    @GetMapping("/guery")//http://localhost:8080/students/query?id=1 + GET
+    public ResponseEntity<Student> getStudent(@RequestParam("id") Long id){
+
+        Student student = studentService.getStudent(id);
+        return new ResponseEntity<>(student,HttpStatus.OK);
+
+    }
+
+
+
 }
