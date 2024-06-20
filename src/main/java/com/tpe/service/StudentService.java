@@ -1,6 +1,7 @@
 package com.tpe.service;
 
 import com.tpe.domain.Student;
+import com.tpe.dto.StudentDTO;
 import com.tpe.exception.ConflictException;
 import com.tpe.exception.ResourceNotFoundException;
 import com.tpe.repository.StudentRepository;
@@ -28,10 +29,20 @@ public class StudentService {
         studentRepository.save(student);
     }
 
-    public Student getStudent(Long id) {
+    public Student findStudent(Long id) {
 
-        Student student = studentRepository.findById(id).orElseThrow(()-> new  ResourceNotFoundException("Student not found by id : "+id));
+        return  studentRepository.findById(id).orElseThrow(()-> new  ResourceNotFoundException("Student not found with id : "+id));
 
-        return student;
+    }
+
+    public void deleteStudent(Long id) {
+        Student student = findStudent(id);
+        studentRepository.deleteById(id);
+    }
+
+    public void updateStudent(Long id, StudentDTO studentDTO) {
+        Student student = findStudent(id);
+
+
     }
 }
