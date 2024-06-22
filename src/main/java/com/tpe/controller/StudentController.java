@@ -59,7 +59,7 @@ public class StudentController {
         return new ResponseEntity<>(student,HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")//http://localhost:8080/students/2 + DELETE
+    @DeleteMapping("/{id}")//http://localhost:8080/students/2 + DELETE
     public ResponseEntity<Map<String,String>> deleteStudent(@PathVariable("id") Long id){
 
         studentService.deleteStudent(id);
@@ -85,6 +85,26 @@ public class StudentController {
         Pageable pageable = PageRequest.of(page,size,Sort.by(direction,prop));
         Page<Student> studentPage = studentService.getAllWithPage(pageable);
         return ResponseEntity.ok(studentPage) ;
+    }
+
+    @GetMapping("/querylastname")//http://localhost:8080/students/querylastname?lastName=kaya +GET
+    public ResponseEntity<List<Student>> getStudentByLastName(@RequestParam("lastName") String lastName){
+        List<Student> studentList = studentService.findStudent(lastName);
+        return ResponseEntity.ok(studentList);
+
+    }
+
+    @GetMapping("/query/{grade}")//http://localhost:8080/students/query/70 +GET
+    public ResponseEntity<List<Student>> getStudentEqualsGrade(@PathVariable("grade") Integer grade){
+        List<Student> list = studentService.findAllEqualGrades(grade);
+        return ResponseEntity.ok(list);
+    }
+
+
+    @GetMapping("/query/dto")//http://localhost:8080/students/query/dto?id=1 +GET
+    public ResponseEntity<StudentDTO> getStudentDTOById(@RequestParam("id") Long id){
+        StudentDTO studentDTO = studentService.findStudentDTOById(id);
+        return ResponseEntity.ok(studentDTO);
     }
 
 
