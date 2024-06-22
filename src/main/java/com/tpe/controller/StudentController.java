@@ -3,6 +3,8 @@ package com.tpe.controller;
 import com.tpe.domain.Student;
 import com.tpe.dto.StudentDTO;
 import com.tpe.service.StudentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/students") //http://localhost:8080/students + GET + POST + PUT + DELETE
 public class StudentController {
+
+    Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     @Autowired
     private StudentService studentService;
