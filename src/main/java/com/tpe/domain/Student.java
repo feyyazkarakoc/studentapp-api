@@ -9,13 +9,15 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Student {
+public class  Student {
 
 
     @Id
@@ -44,6 +46,9 @@ public class Student {
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "MM/dd/yyyy HH:mm:ss",timezone = "Turkey")
     @Setter(AccessLevel.NONE)
     private LocalDateTime createDate = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "student")
+    private List<Book> book = new ArrayList<>();
 
 
 }

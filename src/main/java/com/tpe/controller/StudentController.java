@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
@@ -109,6 +110,14 @@ public class StudentController {
     public ResponseEntity<StudentDTO> getStudentDTOById(@RequestParam("id") Long id){
         StudentDTO studentDTO = studentService.findStudentDTOById(id);
         return ResponseEntity.ok(studentDTO);
+    }
+
+
+    @GetMapping("/welcome")//http://localhost:8080/students/welcome + GET
+    public String welcome(HttpServletRequest request){
+
+        logger.warn("------------------------Welcome{}",request.getServletPath());
+        return "-----------------------------> Wecome To Student Controller";
     }
 
 
