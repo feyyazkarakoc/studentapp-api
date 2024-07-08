@@ -11,6 +11,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/sbootintro_db_tekrar
     username: db_user1
     password: 12345
+
+  security:
+    user:
+      name: name
+      password: password
+
   jpa:
     hibernate:
       ddl-auto: update
