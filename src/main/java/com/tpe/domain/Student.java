@@ -51,5 +51,10 @@ public class  Student {
     private List<Book> book = new ArrayList<>();
 
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
 }
 
